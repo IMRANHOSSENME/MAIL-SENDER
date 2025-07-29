@@ -274,6 +274,11 @@ IMRAN HOSSEN`
                 body: JSON.stringify(emailData)
             });
 
+            // Check if response is ok
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+
             const result = await response.json();
 
             if (result.success) {
@@ -289,7 +294,19 @@ IMRAN HOSSEN`
             }
         } catch (error) {
             console.error('Error sending email:', error);
-            showStatus('❌ Network error. Please check your connection and try again.', false);
+            
+            // More specific error messages
+            if (error.name === 'TypeError' && error.message.includes('fetch')) {
+                showStatus('❌ Network error. Please check your internet connection and try again.', false);
+            } else if (error.message.includes('HTTP 404')) {
+                showStatus('❌ API endpoint not found. Please contact support.', false);
+            } else if (error.message.includes('HTTP 500')) {
+                showStatus('❌ Server error. Please try again later.', false);
+            } else if (error.message.includes('HTTP 405')) {
+                showStatus('❌ Method not allowed. Please contact support.', false);
+            } else {
+                showStatus(`❌ Error: ${error.message}`, false);
+            }
         } finally {
             // Re-enable submit button
             submitBtn.disabled = false;
@@ -305,6 +322,45 @@ IMRAN HOSSEN`
         } else {
             advancedOptions.style.display = 'none';
         }
+    }
+
+    // Health Check Button
+    const healthCheckBtn = document.getElementById('healthCheckBtn');
+    if (healthCheckBtn) {
+        healthCheckBtn.addEventListener('click', async function() {
+            const originalText = healthCheckBtn.textContent;
+            healthCheckBtn.disabled = true;
+            healthCheckBtn.textContent = '🔄 Checking...';
+
+            try {
+                const response = await fetch('/api/health', {
+                    method: 'GET'
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const result = await response.json();
+                
+                if (result.success) {
+                    let envStatus = '';
+                    for (const [key, value] of Object.entries(result.envCheck)) {
+                        envStatus += `${key}: ${value}\n`;
+                    }
+                    
+                    showStatus(`✅ API Status: Working!\n\nEnvironment: ${result.environment}\nTimestamp: ${result.timestamp}\n\nEnvironment Variables:\n${envStatus}`, true);
+                } else {
+                    showStatus(`❌ API Health Check Failed: ${result.error}`, false);
+                }
+            } catch (error) {
+                console.error('Health check error:', error);
+                showStatus(`❌ Health Check Failed: ${error.message}`, false);
+            } finally {
+                healthCheckBtn.disabled = false;
+                healthCheckBtn.textContent = originalText;
+            }
+        });
     }
 
     // Add advanced options toggle button (optional)
