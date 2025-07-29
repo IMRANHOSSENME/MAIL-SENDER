@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Signature</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="email-container">
+        <form id="emailForm">
+            <input type="hidden" name="from_name" value="IMRAN HOSSEN">
+            <input type="hidden" name="from_email" value="contact@imranhossen.me">
+            
+            <p>To: <span class="recipient"><input type="email" placeholder="Your Recipient" name="to_email" id="recipient" required></span></p>
+            <p>From: <span class="sender">contact@imranhossen.me</span></p>
+            <p>Subject: <input type="text" placeholder="Subject" name="subject" id="subject" required></p>
+            
+            <!-- Advanced options (initially hidden) -->
+            <div id="advancedOptions" style="display: none;">
+                <p>CC: <input type="email" placeholder="CC Email (optional)" name="cc_email" id="cc_email"></p>
+                <p>BCC: <input type="email" placeholder="BCC Email (optional)" name="bcc_email" id="bcc_email"></p>
+            </div>
+            
+            <!-- Email Templates Section -->
+            <div class="template-section">
+                <p><strong>📧 Email Templates:</strong></p>
+                <select id="emailTemplates" class="template-select">
+                    <option value="">Choose a template...</option>
+                    <option value="business_inquiry">Business Inquiry</option>
+                    <option value="job_application">Job Application</option>
+                    <option value="meeting_request">Meeting Request</option>
+                    <option value="follow_up">Follow Up</option>
+                    <option value="project_proposal">Project Proposal</option>
+                    <option value="thank_you">Thank You</option>
+                    <option value="introduction">Introduction</option>
+                    <option value="collaboration">Collaboration Request</option>
+                </select>
+            </div>
+            
+            <div class="write">
+                <textarea name="message" id="message" placeholder="Write your message here or select a template above" required></textarea>
+            </div>
+
+            <!-- Live Preview Section -->
+            <div class="preview-section" id="previewSection" style="display: none;">
+                <p><strong>📋 Email Preview:</strong></p>
+                <div class="email-preview" id="emailPreview">
+                    <!-- Preview content will be generated here -->
+                </div>
+            </div>
+
+        <div class="signature-container">
+            <div class="signature-details">
+                <h2>IMRAN HOSSEN</h2>
+                <p>Computer Engineer</p>
+                <p>Founder and CEO | DARKBDSHOP</p>
+            </div>
+            <div class="signature-contact">
+                <p><i class="fas fa-phone"></i> +8809638840088</p>
+                <p><i class="fas fa-envelope"></i> contact@imranhossen.me</p>
+                <p><i class="fas fa-globe"></i> <a href="https://www.imranhossen.me" target="_blank" class="url">https://www.imranhossen.me</a></p>
+                <p><i class="fas fa-map-marker-alt"></i> Angargara, Bhaluka, Mymenshingh, 2240</p>
+            </div>
+        </div>
+        <hr>
+        <div class="social-icons">
+            <a href="https://www.facebook.com/imranhossenme"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.twitter.com/imranhossenme"><i class="fab fa-twitter"></i></a>
+            <a href="https://www.linkedin.com/in/imranhossenme"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/imranhossenme"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@imranhossenme"><i class="fab fa-youtube"></i></a>
+        </div>
+        <p class="create-signature">Copyright © 2025 IMRAN HOSSEN</p>
+
+        <button type="submit" id="submitBtn">📧 Send Email</button>
+        </form>
+    </div>
+
+
+    
+    <!-- Include your custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>

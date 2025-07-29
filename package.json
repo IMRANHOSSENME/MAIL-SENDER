@@ -2,7 +2,7 @@
   "name": "email-sender-api",
   "version": "1.0.0",
   "description": "Email sender API with Node.js and Vercel deployment using SMTP",
-  "main": "api/send-email.js",
+  "main": "server.js",
   "scripts": {
     "dev": "node server.js",
     "start": "node server.js",
