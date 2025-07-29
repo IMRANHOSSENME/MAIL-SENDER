@@ -1,0 +1,413 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+}
+
+.email-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #dddddd;
+    border-radius: 10px;
+}
+
+.recipient {
+    background-color: #e0f7fa;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+input[type="email"],
+input[type="text"],
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.template-section {
+    margin: 15px 0;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    border: 1px solid #e9ecef;
+}
+
+.template-section p {
+    margin: 0 0 8px 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.template-select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: white;
+    font-size: 14px;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+}
+
+.template-select:hover {
+    border-color: #007bff;
+}
+
+.template-select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.preview-section {
+    margin: 20px 0;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e9ecef;
+}
+
+.preview-section p {
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.email-preview {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.preview-signature {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px solid #e91e63;
+}
+
+.preview-signature-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 10px;
+    gap: 20px;
+}
+
+.preview-signature-details {
+    flex: 1;
+    min-width: 250px;
+}
+
+.preview-signature-contact {
+    flex: 1;
+    min-width: 250px;
+}
+
+.preview-signature-details h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+.preview-signature-details p,
+.preview-signature-contact p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.preview-signature-contact p {
+    display: flex;
+    align-items: center;
+}
+
+.preview-signature-contact i {
+    margin-right: 10px;
+    color: #e91e63;
+}
+
+.preview-url {
+    color: black;
+    text-decoration: none;
+}
+
+.preview-social-icons {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.preview-social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+    color: #555;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.preview-social-icons a:hover {
+    color: #e91e63;
+}
+
+.preview-social-icons a i {
+    font-size: 24px;
+}
+
+.preview-copyright {
+    text-align: center;
+    font-size: 12px;
+    color: #888888;
+    margin: 10px 0;
+}
+
+/* Responsive Design for Preview */
+@media (max-width: 600px) {
+    .preview-signature-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .preview-signature-details,
+    .preview-signature-contact {
+        min-width: 100%;
+        text-align: center;
+    }
+
+    .preview-signature-contact p {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 601px) {
+    .preview-signature-container {
+        flex-direction: row;
+    }
+    
+    .preview-signature-details,
+    .preview-signature-contact {
+        flex: 1;
+        min-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .preview-signature-details h2 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .preview-signature-details p,
+    .preview-signature-contact p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .preview-social-icons a {
+        margin: 5px;
+    }
+}
+
+textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: Arial, sans-serif;
+}
+
+.email-actions {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.email-actions button {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    margin: 5px 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+.email-actions button:hover {
+    opacity: 0.8;
+}
+
+.email-actions button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.signature-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    gap: 20px;
+}
+
+.signature-details {
+    flex: 1;
+    min-width: 250px;
+}
+
+.signature-contact {
+    flex: 1;
+    min-width: 250px;
+}
+
+.url{
+    color: black;
+    text-decoration: none;
+}
+
+.signature-details h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.signature-details p,
+.signature-contact p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.signature-contact p {
+    display: flex;
+    align-items: center;
+}
+
+.signature-contact i {
+    margin-right: 10px;
+    color: #e91e63; /* Pink color for icons */
+}
+
+.social-icons {
+    text-align: center;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.social-icons a {
+    margin: 0 10px;
+    display: inline-block;
+    color: #555;
+    font-size: 24px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #e91e63;
+}
+
+.social-icons a i {
+    font-size: 24px;
+}
+
+.create-signature {
+    text-align: center;
+    font-size: 12px;
+    color: #888888;
+}
+
+button[type="submit"] {
+    background-color: #28a745; /* Green color for submit button */
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-align: center;
+    display: block;
+    margin: 0 auto; /* Center the button */
+}
+
+.status-message {
+    padding: 12px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.status-message.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.status-message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .signature-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .signature-details,
+    .signature-contact {
+        min-width: 100%;
+        text-align: center;
+    }
+
+    .signature-contact p {
+        justify-content: center;
+    }
+}
+
+@media (min-width: 601px) {
+    .signature-container {
+        flex-direction: row;
+    }
+    
+    .signature-details,
+    .signature-contact {
+        flex: 1;
+        min-width: 250px;
+    }
+}
+
+@media (max-width: 480px) {
+    .signature-details h2 {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .signature-details p,
+    .signature-contact p {
+        font-size: 12px;
+        text-align: center;
+    }
+
+    .social-icons a {
+        margin: 5px;
+    }
+}
